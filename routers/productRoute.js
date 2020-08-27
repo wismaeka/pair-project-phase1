@@ -1,6 +1,6 @@
 
 const route = require('express').Router();
-//const ProductionHouseController = require('../controllers/productionhouseController.js');
+const ProductController = require('../controllers/productController.js');
 
 //route.get('/', ProductController.showData)
 

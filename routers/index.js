@@ -9,7 +9,7 @@ const Controller = require('../controllers/controller.js');
 
 router.get('/', Controller.home)
 
-// route.use('/user', userRoute)
+router.use('/users', userRoute)
 // route.use('/product', productRoute)
 // route.use('/customer', customerRoute)
 // route.use('/sales', salesRoute)
