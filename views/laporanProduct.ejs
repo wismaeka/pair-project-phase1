@@ -20,6 +20,7 @@
             <th scope="col">#</th>
             <th scope="col">Nama Pembeli</th>
             <th scope="col">Banyaknya</th>
+            <th scope="col">Tanggal Pembelian</th>
           </tr>
         </thead>
         <tbody>
@@ -28,6 +29,7 @@
             <th><%= data[i].id %> </th>
             <td><%= data[i].Customer.name %></td>
             <td><%= data[i].order_qty %></td>
+            <td><%= data[i].Customer.createdAt %></td>
           </tr>
           <% } %>
         </tbody>
