@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  <%- include('partials/navbar_after_login.ejs',{title : "Laporan",user: "test"})%>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,10 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Laporan Product</title>
   </head>
   <body>
-    <h1 align="center" ></h1>
+    <h1 align="center" ><%= productData[0].name %></h1>
 
     <table class="table">
         <thead class="thead-light">
@@ -19,17 +20,14 @@
             <th scope="col">#</th>
             <th scope="col">Nama Pembeli</th>
             <th scope="col">Banyaknya</th>
-            <th scope="col">Handle</th>
           </tr>
         </thead>
         <tbody>
           <% for (let i = 0; i < data.length; i++) { %>
-            <%= data[i] %>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th><%= data[i].id %> </th>
+            <td><%= data[i].Customer.name %></td>
+            <td><%= data[i].order_qty %></td>
           </tr>
           <% } %>
         </tbody>
