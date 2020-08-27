@@ -8,7 +8,7 @@ router.post('/register', Controller.postRegister);
 router.get('/login', Controller.loginForm);
 router.post('/login', Controller.login);
 
-// router.get('/logout', Controller.logout)
+router.get('/logout', Controller.logout)
 // function checkLogin(req, res, next){
 //     if(req.session.username){
 //         next();
