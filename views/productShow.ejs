@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+<body>
+    <% data.forEach( el =>{ %>
+    <div class="card-deck">
+        
+        <div class="card">
+          <img class="img-thumbnail" width="200" height="100" src="<%=el.product_image %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= el.name %></h5>
+            <p class="card-text"> Stock <br>
+                <%= el.stock %></p> <br>
+            <p class="card-text">Rp.<%= el.price %></p>
+            <button type="button" class="btn btn-success">Buy</button>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <%})%>
+</body>
+</html>

@@ -23,6 +23,7 @@ class UserController {
 
     static loginForm(req, res) {
         let err = req.app.locals.errors
+        delete req.app.locals.errors
         res.render('login',{err})
     }
 
@@ -35,31 +36,26 @@ class UserController {
             }
         })
             .then(data => {
-                //console.log(data,"<<<data")
                 // kalo username dan pass blm ada di database blm di handle
-                // if (data) { //kalo username ada di database
-                //console.log(password, data[0].password, "passss>>>>>>>")
+                if (data.length > 0) { //kalo username ada di database
                     let output = bcrypt.compareSync(password, data[0].password);
-                    console.log(output,"<<<output")
                     if (output) {
-                        console.log("here")
+                        req.session.user = data.username
                         res.redirect('/product')
                     } else {
-                        req.app.loacls.errors = `Username atau Password Salah`
-                        console.log("im here")
+                        req.app.locals.errors = `Username atau Password Salah`
                         res.redirect('/users/login')
                        
                     }
-                // } 
-                // else {
-                //     req.app.loacls.errors = `Username atau Password Salah`
-                //     res.redirect('/users/login')
-                // }
+                } 
+                else {
+                    req.app.locals.errors = `Username atau Password Salah`
+                    res.redirect('/users/login')
+                }
 
             })
             .catch(err => {
-                // console.log("err,login")
-                // res.send(err)
+                res.send(err)
             })
     }
 }

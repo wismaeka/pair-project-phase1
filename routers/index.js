@@ -10,7 +10,7 @@ const Controller = require('../controllers/controller.js');
 router.get('/', Controller.home)
 
 router.use('/users', userRoute)
-// route.use('/product', productRoute)
+router.use('/product', productRoute)
 // route.use('/customer', customerRoute)
 // route.use('/sales', salesRoute)
 
