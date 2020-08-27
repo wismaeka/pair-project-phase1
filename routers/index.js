@@ -1,4 +1,4 @@
-const route = require('express').Router()
+const router = require('express').Router()
 
 const userRoute = require('./userRoute.js');
 const productRoute = require('./productRoute.js');
@@ -7,15 +7,15 @@ const salesRoute = require('./salesRoute.js');
 const laporanRoute = require('./laporanRoute')
 const Controller = require('../controllers/controller.js');
 
-route.get('/', Controller.home)
+router.get('/', Controller.home)
 
-route.use('/laporan', laporanRoute)
+router.use('/laporan', laporanRoute)
 
 router.use('/users', userRoute)
 router.use('/product', productRoute)
-// route.use('/customer', customerRoute)
-// route.use('/sales', salesRoute)
+router.use('/customer', customerRoute)
+router.use('/sales', salesRoute)
 
 
 
-module.exports = route
+module.exports = router
