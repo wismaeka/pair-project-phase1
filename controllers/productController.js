@@ -41,7 +41,8 @@ class ProductController {
                             }
                         }
                         console.log(temp, order)
-                        res.render('cart', { temp, order, dataProduct })
+                        let user = req.session.user
+                        res.render('cart', { temp, order, dataProduct,user})
                     })
                     .catch(err => {
                         res.send(err)
