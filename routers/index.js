@@ -11,8 +11,8 @@ route.get('/', Controller.home)
 
 route.use('/laporan', laporanRoute)
 
-// route.use('/user', userRoute)
-// route.use('/product', productRoute)
+router.use('/users', userRoute)
+router.use('/product', productRoute)
 // route.use('/customer', customerRoute)
 // route.use('/sales', salesRoute)
 
