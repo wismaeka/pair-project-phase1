@@ -41,6 +41,8 @@ class UserController {
                     let output = bcrypt.compareSync(password, data[0].password);
                     if (output) {
                         req.session.user = data.username
+                        console.log(req.session.user,"<<<userrcontroller")
+                        console.log(data.username,"<<<datausername")
                         res.redirect('/product')
                     } else {
                         req.app.locals.errors = `Username atau Password Salah`
