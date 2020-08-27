@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <%- include('partials/navbar_after_login.ejs',{title : "Laporan",user: "test"})%>
+  <%- include('partials/navbar_after_login.ejs',{title : "Report",user})%>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,7 +12,7 @@
     <title>Laporan</title>
   </head>
   <body>
-    <h1 align="center" >Laporan Penjualan</h1><br>
+    <h1 align="center" >Sales Report</h1><br>
     <div class="container">
         <table class="table">
             <thead class="thead-light">
@@ -20,7 +20,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Stock</th>
-                <th scope="col">Terjual</th>
+                <th scope="col">Sold</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -32,7 +32,7 @@
                 <td> <%= data[i].name %> </td>
                 <td> <%= data[i].stock - temp[i]%> </td>
                 <td> <%= temp[i] %> </td>
-                <td><a href="/laporan/<%= data[i].id %>"> Data Pembeli</a></td>
+                <td><a href="/laporan/<%= data[i].id %>"> Buyers Info</a></td>
               </tr>
                 <% } %>
               </tr>

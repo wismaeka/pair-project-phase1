@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <%- include('partials/navbar_after_login.ejs',{title : "Laporan",user: "test"})%>
+  <%- include('partials/navbar_after_login.ejs',{title : "Report",user})%>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,9 +18,9 @@
         <thead class="thead-light">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nama Pembeli</th>
-            <th scope="col">Banyaknya</th>
-            <th scope="col">Tanggal Pembelian</th>
+            <th scope="col">Buyer Name</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Order Date</th>
           </tr>
         </thead>
         <tbody>
