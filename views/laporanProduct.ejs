@@ -11,7 +11,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1 align="center" ><%= data[0].Product.name %></h1>
+    <h1 align="center" ></h1>
 
     <table class="table">
         <thead class="thead-light">
@@ -23,24 +23,15 @@
           </tr>
         </thead>
         <tbody>
+          <% for (let i = 0; i < data.length; i++) { %>
+            <%= data[i] %>
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          <% } %>
         </tbody>
       </table>
 
