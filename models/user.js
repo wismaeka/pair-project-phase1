@@ -25,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     username: {
-      type: DataTypes.STRING,
-      unique :true,
+      type: DataTypes.TEXT,
       validate: {
         notEmpty: {
           args: true,
@@ -39,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         notContains: {
           args: 'admin',
           msg: 'Admin is out of question!'
-        }
+        },
       }
     },
     password: {
