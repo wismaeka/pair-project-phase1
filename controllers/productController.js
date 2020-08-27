@@ -15,7 +15,8 @@ class ProductController {
 
     static postAddProduct(req, res) {
         const { order_qty } = req.body
-        console.log(req.body)
+        let user = req.session.user
+        let customer = req.body.name
         let dataProduct;
         Product.findAll({
 
@@ -40,9 +41,12 @@ class ProductController {
                                 })
                             }
                         }
-                        console.log(temp, order)
-                        let user = req.session.user
-                        res.render('cart', { temp, order, dataProduct,user})
+
+                        let hasil = 0
+                        for (let i = 0; i< temp.length;i++) {
+                            hasil += dataProduct[temp[i]-1].price
+                        }
+                        res.render('invoice', { temp, order, dataProduct ,user, customer, data, hasil})
                     })
                     .catch(err => {
                         res.send(err)
