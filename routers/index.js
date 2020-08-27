@@ -1,17 +1,19 @@
 const { Router } = require('express');
-const route = require('express').Router()
+const router = require('express').Router()
 
 const userRoute = require('./userRoute.js');
 const productRoute = require('./productRoute.js');
 const customerRoute = require('./customerRoute.js');
+const salesRoute = require('./salesRoute.js');
 const Controller = require('../controllers/controller.js');
 
-route.get('/', Controller.readAll);
+router.get('/', Controller.home)
 
-route.use('/user', userRoute)
-route.use('/product', productRoute)
-route.use('/customer', customerRoute)
+// route.use('/user', userRoute)
+// route.use('/product', productRoute)
+// route.use('/customer', customerRoute)
+// route.use('/sales', salesRoute)
 
 
 
-module.exports = route
+module.exports = router
