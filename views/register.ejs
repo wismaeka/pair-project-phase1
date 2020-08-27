@@ -7,6 +7,9 @@
     <title>Register</title>
 </head>
 <body>
+    <% if(error) { %>
+        <p><%=error%></p>
+    <%}%>
     <form action="" method="post">
         <div class="form-group">
             <label> Name</label>
