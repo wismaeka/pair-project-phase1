@@ -15,7 +15,7 @@ class LaporanController {
             })
             .then(order => {
                 let temp = []
-                for (let i = 1; i < data.length; i++) {
+                for (let i = 1; i <= data.length; i++) {
                     for (let j = 0; j < order.length; j++) {
                         if (i === order[j].productId) {
                             temp.push(order[j].order_qty)
