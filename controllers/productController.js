@@ -16,26 +16,38 @@ class ProductController {
     static postAddProduct(req, res) {
         const { order_qty } = req.body
         console.log(req.body)
-        Customer.create({
-            name: req.body.name
+        let dataProduct;
+        Product.findAll({
+
         })
-            .then(data => {
-                for (let i = 0; i < order_qty.length; i++) {
-                    if (order_qty[i] > 0) {
+            .then(hasil => {
+                dataProduct = hasil
+                return Customer.create({
+                    name: req.body.name
+                })
+                    .then(data => {
+                        let temp = []
+                        let order = []
+                        for (let i = 1; i < order_qty.length; i++) {
+                            if (order_qty[i] > 0) {
+                                temp.push(i + 1)
+                                order.push(order_qty[i])
+                                Sales.create({
+                                    customerId: data.id,
+                                    productId: i + 1,
+                                    order_qty: order_qty[i]
 
-                        Sales.create({
-                            customerId: data.id,
-                            productId: i,
-                            order_qty: order_qty[i]
+                                })
+                            }
+                        }
+                        console.log(temp, order)
+                        res.render('cart', { temp, order, dataProduct })
+                    })
+                    .catch(err => {
+                        res.send(err)
+                    })
+            })
 
-                        })
-                    }
-                }
-                res.redirect('/cart')
-            })
-            .catch(err => {
-                res.send(err)
-            })
 
 
         // res.redirect('/cart')

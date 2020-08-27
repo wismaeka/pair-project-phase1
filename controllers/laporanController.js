@@ -10,22 +10,33 @@ class LaporanController {
         })
             .then(productData => {
                 data = productData
-                return Sales.findAll()
+                return Sales.findAll({
+                    order: [
+                        ['id', 'ASC']
+                    ]
+                })
 
             })
             .then(order => {
                 let temp = []
+
+                console.log(data)
+
                 let user = req.session.user
+          
                 for (let i = 1; i <= data.length; i++) {
                     for (let j = 0; j < order.length; j++) {
-                        if (i === order[j].productId) {
-                            temp.push(order[j].order_qty)
+                        if (Number(i) == Number(order[j].productId)) {
+                            console.log(data[i])
+                            temp.push(Number(order[j].order_qty))
                         } else {
                             temp.push(0)
                         }
 
                     }
                 }
+
+                console.log(temp)
                 res.render('laporan', { data, order , temp,user})
             })
             .catch(err => {
@@ -51,8 +62,14 @@ class LaporanController {
 
             })
             .then(productData => {
-                let user = req.session.user
-                res.render('laporanProduct', { id, data, productData,user})
+         let user = req.session.user
+                if(data[0] === undefined) {
+                    res.send('tes')
+                } else {
+                    res.render('laporanProduct', { id, data, productData,user})
+                }
+                
+
             })
             .catch(err => {
                 res.send(err)
