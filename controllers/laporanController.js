@@ -34,14 +34,19 @@ class LaporanController {
 
     static laporanProduct(req, res) {
         const id = req.params.id
+        console.log(id)
         let data;
         Sales.findAll({
-            where: { productId: 1 },
+            where: { productId: id },
             include: [Product, Customer]
         })
             .then(result => {
                 data = result
-                return Product.findAll()
+                return Product.findAll({
+                    where: {
+                        id : id
+                    }
+                })
 
             })
             .then(productData => {
