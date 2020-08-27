@@ -12,7 +12,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   let productList = JSON.parse(fs.readFileSync('../data.product.json','utf-8'))
+   let productList = JSON.parse(fs.readFileSync('./data/product.json','utf-8'))
    productList = productList.map(el=>{
      el.createdAt = new Date(),
      el.updatedAt = new Date()
