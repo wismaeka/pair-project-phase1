@@ -24,12 +24,13 @@
               </tr>
             </thead>
             <tbody>
-                <% for (let i = 0; i < data.length;i++) { %>
+                
+                <% for (let i = 0; i < data.length;i++) { %>     
               <tr>
                 <th> <%= data[i].id  %></th>
                 <td> <%= data[i].name %> </td>
-                <td> <%= data[i].stock %> </td>
-                <td> <%= data[i].stock %> </td>
+                <td> <%= data[i].stock - temp[i]%> </td>
+                <td> <%= temp[i] %> </td>
                 <td><a href="/laporan/<%= data[i].id %>"> Data Pembeli</a></td>
               </tr>
                 <% } %>
