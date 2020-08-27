@@ -41,6 +41,7 @@ class ProductController {
                                 })
                             }
                         }
+
                         let hasil = 0
                         for (let i = 0; i< temp.length;i++) {
                             hasil += dataProduct[temp[i]-1].price

@@ -25,7 +25,7 @@ class UserController {
                 } else {
                     data.forEach(el => {
                         if (el.username === username) {
-                            req.app.locals.err = `Username is no available, please try another one!`
+                            req.app.locals.err = `Username is not available, please try another one!`
                             throw new Error()
                         } else {
                             User.create(input)
@@ -80,12 +80,12 @@ class UserController {
                         req.session.user = data[0].name
                         res.redirect('/product')
                     } else {
-                        req.app.locals.errors = `Username atau Password Salah`
+                        req.app.locals.errors = `Wrong password or username`
                         res.redirect('/users/login')
                     }
                 }
                 else {
-                    req.app.locals.errors = `Username atau Password Salah`
+                    req.app.locals.errors = `Wrong password or username`
                     res.redirect('/users/login')
                 }
             })
