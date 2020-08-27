@@ -15,6 +15,7 @@ class LaporanController {
             })
             .then(order => {
                 let temp = []
+                let user = req.session.user
                 for (let i = 1; i <= data.length; i++) {
                     for (let j = 0; j < order.length; j++) {
                         if (i === order[j].productId) {
@@ -25,7 +26,7 @@ class LaporanController {
 
                     }
                 }
-                res.render('laporan', { data, order , temp})
+                res.render('laporan', { data, order , temp,user})
             })
             .catch(err => {
                 res.send(err)
@@ -50,7 +51,8 @@ class LaporanController {
 
             })
             .then(productData => {
-                res.render('laporanProduct', { id, data, productData })
+                let user = req.session.user
+                res.render('laporanProduct', { id, data, productData,user})
             })
             .catch(err => {
                 res.send(err)
