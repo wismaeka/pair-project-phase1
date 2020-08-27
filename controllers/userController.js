@@ -4,7 +4,9 @@ const bcrypt = require('bcryptjs')
 class UserController {
 
     static getRegister(req, res) {
-        res.render("register",{error : []})
+        let error = req.app.locals.message
+        delete req.app.locals.message
+        res.render("register", { error })
     }
 
     static postRegister(req, res) {
@@ -12,14 +14,14 @@ class UserController {
         let input = { name, username, password }
         User.findAll()
             .then(data => {
-                if (data.length <1) {
+                if (data.length < 1) {
                     User.create(input)
-                            .then(data => {
-                                res.redirect('/users/login')
-                            })
-                            .catch(err => {
-                                res.send(err)
-                            })
+                        .then(data => {
+                            res.redirect('/users/login')
+                        })
+                        .catch(err => {
+                            res.send(err)
+                        })
                 } else {
                     data.forEach(el => {
                         if (el.username === username) {
@@ -31,19 +33,31 @@ class UserController {
                                     res.redirect('/users/login')
                                 })
                                 .catch(err => {
-                                    res.send(err)
+
+                                    if (err.name === 'SequelizeValidationError') {
+                                        if (err.errors.length > 0) {
+                                            let errors = err.errors.map(error => {
+                                                return error.message
+                                            })
+                                            req.app.locals.message = errors
+                                        }
+                                        res.redirect('/users/register')
+                                    } else {
+                                        console.log(err)
+                                        res.send(err)
+                                    }
                                 })
                         }
                     });
                 }
             })
-            .catch(err=>{
+            .catch(err => {
+                let arr = []
                 let error = req.app.locals.err
+                arr.push(error)
                 delete req.app.locals.err
-                res.render('register',{error})
+                res.render('register', { error: arr })
             })
-
-
     }
 
     static loginForm(req, res) {
@@ -74,7 +88,6 @@ class UserController {
                     req.app.locals.errors = `Username atau Password Salah`
                     res.redirect('/users/login')
                 }
-
             })
             .catch(err => {
                 res.send(err)
@@ -89,9 +102,7 @@ class UserController {
                 res.redirect('/')
             }
         })
-
     }
-
 }
 
 module.exports = UserController
