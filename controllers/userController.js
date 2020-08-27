@@ -40,9 +40,7 @@ class UserController {
                 if (data.length > 0) { //kalo username ada di database
                     let output = bcrypt.compareSync(password, data[0].password);
                     if (output) {
-                        req.session.user = data.username
-                        console.log(req.session.user,"<<<userrcontroller")
-                        console.log(data.username,"<<<datausername")
+                        req.session.user = data[0].name
                         res.redirect('/product')
                     } else {
                         req.app.locals.errors = `Username atau Password Salah`
@@ -59,6 +57,17 @@ class UserController {
             .catch(err => {
                 res.send(err)
             })
+    }
+
+    static logout(req,res){
+        req.session.destroy(err=>{
+            if (err) {
+                res.send(err)
+            } else {
+                res.redirect('/')
+            }
+        })
+
     }
 }
 
