@@ -3,7 +3,8 @@ const QRCode = require('qrcode')
 
 class cartController {
     static cart(req, res) {
-       res.render('cart')
+        let user = req.session.user
+       res.render('cart',{user})
     }
 }
 
