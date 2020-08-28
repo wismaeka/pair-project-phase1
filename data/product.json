@@ -1,0 +1,44 @@
+[
+    {
+        "name" :"Zanana GreenTea" ,
+        "stock" : 50,
+        "price" : 25000,
+        "product_image" : "images/zananagreentea.PNG"
+    },
+    {
+        "name" :"Zanana Creamy Milk" ,
+        "stock" : 50,
+        "price" : 25000,
+        "product_image" : "images/zanana_creamy_milk.jpeg"
+    },
+    {
+        "name" :"Zanana Chocolate" ,
+        "stock" : 50,
+        "price" : 25000,
+        "product_image" : "images/zananacok.PNG"
+    },
+    {
+        "name" :"Cheese Brownies Chips" ,
+        "stock" : 50,
+        "price" : 15000,
+        "product_image" : "images/bronchipskeju.JPG"
+    },
+    {
+        "name" :"Peanut Brownies Chips" ,
+        "stock" : 50,
+        "price" : 15000,
+        "product_image" : "images/bronchips_kacang.jpeg"
+    },
+    {
+        "name" :"Cireng Chips SuperSpicy" ,
+        "stock" : 50,
+        "price" : 15000,
+        "product_image" : "images/cirengped.JPG"
+    },
+    {
+        "name" :"Cireng Chips Cheese-Spicy" ,
+        "stock" : 50,
+        "price" : 15000,
+        "product_image" : "images/cireng_kej_ped.jpeg"
+    }
+]

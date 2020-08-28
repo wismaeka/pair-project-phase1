@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/navbar_after_login.ejs',{title : "Product",user})%>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+</head>
+
+<body>
+    <div class="container ">
+        <form action="/product" method="post">
+
+            <div class="form-group m-2 mb-2">
+                <label for="inputPassword2" >Customer Name</label>
+                <input type="text" name="name" class="form-control" placeholder="John Doe">
+              </div>
+
+            
+        <div class="row align-bottom">
+                <% data.forEach( el =>{ %>
+
+                <div class="card col-sm-4 col-m-6 col-xs-8 col-xl-3 m-3 align-self-center">
+
+
+                    <div class="card-body align-self-center text-center">
+                        <img class="card-img-top img-responsive" width="20%" height="50%" src="<%=el.product_image %>">
+                        <label><%= el.name %></label><br>
+                        <label>Stock saat ini : <%= el.stock %></label><br>
+                        <!-- <input type="hidden" name="id" value="<%= el.id %>"> -->
+                        <label>Qty</label>
+                        <input type="number" name="order_qty" type="text" class="form-control"
+                            aria-describedby="basic-addon1" min="0" max="<%= el.stock %>">
+                        <p>Rp.<%= el.price %></p>
+
+                    </div>
+
+
+                </div>
+                <%})%>
+                <button style="right: 0; position: fixed;" type="submit" class="btn btn-info">Add to Cart</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>
