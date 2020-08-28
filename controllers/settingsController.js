@@ -4,7 +4,11 @@ const { User } = require('../models')
 class settingsController {
     static viewAll(req, res) {
         let user = req.session.user
-        User.findAll()
+        User.findAll({
+            order:[
+                ["id","ASC"]
+            ]
+        })
         .then(data=>{
            
             res.render('settings',{data,user})
@@ -17,7 +21,6 @@ class settingsController {
     static getEdit(req, res){
         let id = +req.params.id
         User.findAll({
-            order: ['id', 'DESC'],
             where: {
                 id : id
             },
