@@ -47,6 +47,7 @@ class ProductController {
                         for (let i = 0; i < temp.length; i++) {
                             hasil += dataProduct[temp[i] - 1].price
                         }
+
                         let barcode;
                         let random = Math.floor(Math.random() * 2)
                         if (random == 1) {
@@ -55,6 +56,7 @@ class ProductController {
                             barcode = Barcode
                         }
                         res.render('invoice', { temp, order, dataProduct, user, customer, data, hasil, barcode })
+
                     })
                     .catch(err => {
                         res.send(err)
