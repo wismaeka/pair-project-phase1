@@ -46,7 +46,7 @@ class ProductController {
                         for (let i = 0; i< temp.length;i++) {
                             hasil += dataProduct[temp[i]-1].price
                         }
-                        res.render('invoice', { temp, order, dataProduct ,user, customer, data, hasil})
+                        res.render('invoice', { temp, order, dataProduct ,user, customer, data, hasil,user})
                     })
                     .catch(err => {
                         res.send(err)

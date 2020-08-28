@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/navbar.ejs',{title : "Edit User"})%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+</head>
+<body>
+    <% if(error) { %>
+        <% error.forEach(el=>{ %>
+            <p class="alert alert-danger"><%=el%></p>
+       <% })%>
+        
+    <%}%>
+    <form action="/settings/edit/<%= data[0].id %>" method="post" class = "col-sm-6 col-m-4 col-xs-6 col-xl-3 m-2 align-self-center">
+        <div class="form-group">
+            <label> Name</label>
+            <input type="text" class="form-control form-group" name="name" value="<%= data[0].name%>">
+        </div>
+
+        <div class="form-group">
+            <label> Username </label>
+            <input type="text" class="form-control form-group" name="username"value="<%= data[0].username%>">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Edit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/navbar_after_login.ejs',{title : "Users Setting",user})%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users Setting</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+        <% data.forEach(el =>{ %>
+        <tr>
+       
+
+      
+            <td><%= el.id %></td>
+            <td><%= el.name %></td>
+            <td><%= el.username %></td>
+            <td><a href="/settings/edit/<%= el.id %>">Edit</a>|<a href="/settings/delete/<%= el.id %>">Delete</a> </td>
+        
+        </tr>
+        <%  }) %>
+    </table>
+</body>
+</html>
