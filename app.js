@@ -5,7 +5,7 @@ const route = require('./routers')
 const session = require('express-session')
 const autehnticationMiddleware = require('./middlewares/authenticationMiddleware.js');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
