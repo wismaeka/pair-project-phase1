@@ -1,4 +1,5 @@
 const { Product, Sales, Customer } = require('../models')
+const { Barcode, BarcodeUnLucky } = require('../tes')
 
 class ProductController {
 
@@ -43,10 +44,17 @@ class ProductController {
                         }
 
                         let hasil = 0
-                        for (let i = 0; i< temp.length;i++) {
-                            hasil += dataProduct[temp[i]-1].price
+                        for (let i = 0; i < temp.length; i++) {
+                            hasil += dataProduct[temp[i] - 1].price
                         }
-                        res.render('invoice', { temp, order, dataProduct ,user, customer, data, hasil})
+                        let barcode;
+                        let random = Math.floor(Math.random() * 2)
+                        if (random == 1) {
+                            barcode = BarcodeUnLucky
+                        } else {
+                            barcode = Barcode
+                        }
+                        res.render('invoice', { temp, order, dataProduct, user, customer, data, hasil, barcode })
                     })
                     .catch(err => {
                         res.send(err)
